@@ -10,8 +10,6 @@ pool:
   my-local-agent-pool
 
 steps:
-- script: echo Hello from the self-hosted agent!
-  displayName: 'Run on Self-Hosted Agent'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
