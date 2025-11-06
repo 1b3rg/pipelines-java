@@ -7,10 +7,19 @@ trigger:
 - main
 
 pool:
-  my-local-agent-pool
+  name: my-local-agent-pool
+  demands:
+  - maven
+  - java
 
 steps:
+- script: 
+    echo "Verifying local Java and Maven versions..."
+    java -version
+    mvn - version
+  displayName: 'Verify Local Maven/Java Versions'
 - task: Maven@4
+  displayName: 'Run Maven Build (Clean, Package, and Test)'
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'clean package'
